@@ -1,9 +1,9 @@
 import { Router } from "express";
-import xRoutes from "./xRoutes.js";
+import bookRoutes from "./bookRoutes.js";
 import { notFound } from "../midlewares/notFound.js";
 const router = Router();
 
-router.use("/x", xRoutes)
+router.use("/book", bookRoutes)
 router.use(notFound)
 
 export default router;
