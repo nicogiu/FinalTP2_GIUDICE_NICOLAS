@@ -11,10 +11,12 @@ class BookDao {
       return this.books.find((book) => book.code === code);
     }
   
-    addBook(book) {
-      this.books.push(book);
-      return book;
-    }
+    addBook(book) {      
+        this.books.push(book);
+        return book.title;
+      }
+      
+    
   
     removeBook(code) {
       this.books = this.books.filter((book) => book.code !== code);

@@ -7,7 +7,11 @@ class bookApi {
 
   create = async (data) => {
     try {
+      const bookFound = this.getBookByCode(data.code)
+
+      if(bookFound) throw new Error ("Ya hay un libro con ese codigo!")
       const info = await this.bookDao.addBook(data);
+      
       return info;
     } catch (error) {
       return error;

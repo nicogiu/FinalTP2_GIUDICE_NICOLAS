@@ -9,9 +9,12 @@ class bookController {
   create = async (req, res) => {
     try {
       const { code, title, author} = req.body;
+      const bookFound = bookApi.getBookByCode(code);
+
+      if(bookFound) throw new Error ("Ya hay un libro con ese codigo!")
       if (!code || !title || !author) throw new Error("Faltan campos obligatorios");
       const status = "disponible";
-      console.log("entro")
+      
       const info= await this.bookApi.create({code, title, author, status});
       res.status(200).send(info);
     } catch (error) {
